@@ -1,0 +1,22 @@
+{
+  "name": "hansen_e_chatapp",
+  "version": "1.0.0",
+  "description": "chat app with node and express",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "keywords": [
+    "chat",
+    "app",
+    "node",
+    "express",
+    "vue"
+  ],
+  "author": "Evan Hansen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
+  }
+}
