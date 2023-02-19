@@ -12,7 +12,7 @@ export default {
     },
 
     template: `
-    <article class="chat-messages" :class="{ 'other-messages' : matchedID}"> 
+    <article class="chat-messages one-item" :class="{ 'other-messages':matchedID}"> 
         <h1>{{ msg.message.username }}</h1>
         <p>{{ msg.message.content }}</p>
     </article>
