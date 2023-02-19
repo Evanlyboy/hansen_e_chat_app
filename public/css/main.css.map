@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../sass/components/_main.scss"],"names":[],"mappings":"AAAA,KACI","file":"main.css"}
+{"version":3,"sourceRoot":"","sources":["../../sass/components/_main.scss","../../sass/components/_text.scss"],"names":[],"mappings":"AAAA,KACI,yBCmBJ,QACI,iCAGJ,GACI","file":"main.css"}
