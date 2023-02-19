@@ -1,6 +1,8 @@
 // imports go at the top
 import ChatMsg from './components/ChatMessage.js';
 
+// Initializing the server side thing and connecting it to client
+// We're importing io so if socket "emits", it'll go to io
 var socket = io();
 
 function setUserID({ sID }){
@@ -9,19 +11,21 @@ function setUserID({ sID }){
 
 // utility functions for socket
 function addNewMessage(message) {
-  
-    vm.messages.push(message);
+      vm.messages.push(message);
 }
 
+// This is the important event
 function handleTypingEvent(user){
   console.log('someone is typing...');
 }
 
+
+// ------------------ Create Vue Instance Here ------------------
 const { createApp } = Vue
 
 const vm = createApp({
   data() {
-    return {
+    return { // variables as you know
       socketID: '',
       message: '',
       messages: [],
@@ -29,6 +33,7 @@ const vm = createApp({
     }
   },
 
+  // Ok, two methods that seem to interact with the client through socket.
   methods: {
         dispatchMessage() {
            console.log('send a message to the chat service');
@@ -45,7 +50,7 @@ const vm = createApp({
   },
 
 
-
+  // One component
   components: {
     newmsg: ChatMsg
   }

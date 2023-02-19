@@ -1,3 +1,4 @@
+// Nothing to touch here
 export default {
     name: 'TheChatMessageComponent',
 
