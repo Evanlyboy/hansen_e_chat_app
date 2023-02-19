@@ -1,5 +1,7 @@
 // imports go at the top
 import ChatMsg from './components/ChatMessage.js';
+// Importing the new component here
+import TypeEvent from './components/TypingEvent.js';
 
 // Initializing the server side thing and connecting it to client
 // We're importing io so if socket "emits", it'll go to io
@@ -29,7 +31,8 @@ const vm = createApp({
       socketID: '',
       message: '',
       messages: [],
-      username: ''
+      username: '',
+      typingEventMessage: 'is typing'
     }
   },
 
@@ -38,21 +41,25 @@ const vm = createApp({
         dispatchMessage() {
            console.log('send a message to the chat service');
 
-           socket.emit('chat_message', { content: this.message, name: this.username || 'anonymous', id: this.socketID});
+           socket.emit('chat_message', {content: this.message, username: this.username || 'Anonymous', id: this.socketID}); //this comes from the template in ChatMessage.js
 
            this.message = '';
         },
 
         dispatchTypingEvent(){
           // send the typing notification to the server
-          socket.emit('typing_event', {user: this.username || 'anonymous'});
+          socket.emit('typing_event', {user: this.username || 'Anonymous'});
+          socket.emit('chat_message', {content: this.typingEventMessage, username: this.username || 'Anonymous', id: this.socketID}); // Ok so if we copy the above and paste it here with some changes, it also works
+          // Ok cool, looks like this works
       }
   },
 
 
   // One component
+  // Two components
   components: {
-    newmsg: ChatMsg
+    newmsg: ChatMsg,
+    typemsg: TypeEvent
   }
 
 

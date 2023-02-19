@@ -36,8 +36,11 @@ io.on('connection', (socket) => {
     
     socket.emit('connected', { sID: socket.id, message: 'new connection' }); // It looks like socket is for server side shit, and IO is for client side shit
 
+    socket.on('disconnect', () => {console.log('chat user disconnected:')}); // Stole this from the socket.io site
+
     //step 1 - recieve incoming messasges
     
+    // ------------------ Basic Handoff ------------------
     socket.on('chat_message', function(msg) { // "function" is irrational
       console.log(msg); // have a look at the message data
 
@@ -49,6 +52,19 @@ io.on('connection', (socket) => {
       
       io.emit('new_message', { id: socket.id, message: msg }); // Ok so now here's the handoff from the server (socket) to the client (io)
     })
+    // ------------------------------------------------------
+
+    // ------------------ Typing Message Handoff ------------------
+     // So if we just make this typingMessage instead of chat message...
+    // socket.on('typing_message', function(userTyping) { // "function" is irrational
+    //   console.log(userTyping); // have a look at the message data
+
+    // io.emit('new_message', { id: socket.id, message: userTyping }); // Ok so now here's the handoff from the server (socket) to the client (io)
+    //  })
+
+    // I don't think this is going to work the way I want it to after all
+
+    // ------------------------------------------------------
 
     // ------------------ CUSTOM EVENTS PART ------------------
     // catch incoming custom events (in this case the typing event sent from the client)
@@ -62,6 +78,7 @@ io.on('connection', (socket) => {
     //  So far this is the same as above with different words. Maybe 'user_typing' is somehow different.
     socket.on('user_typing', function(user) {
     console.log(user);
+
     // Client sends the emit of typing and passes a function through it? I'll have to see what "currentlyTyping" is
     io.emit('typing', { currentlytyping: user });
   });

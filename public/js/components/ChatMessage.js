@@ -1,4 +1,5 @@
 // Nothing to touch here
+// Wait actually, gonna copy this for the typing event component
 export default {
     name: 'TheChatMessageComponent',
 
@@ -12,7 +13,7 @@ export default {
 
     template: `
     <article class="chat-messages" :class="{ 'other-messages' : matchedID}"> 
-        <h1>{{ msg.message.name }}</h1>
+        <h1>{{ msg.message.username }}</h1>
         <p>{{ msg.message.content }}</p>
     </article>
     `
