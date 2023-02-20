@@ -1,3 +1,31 @@
 body {
     background-color: #B80404;
 }
+
+header {
+    padding: 2em;
+}
+
+.chat-messages {
+    background-color: white;
+    border-radius: 1em;
+    padding: .5em;
+    margin: 1em 0em 1em 0em;
+    text-align: left;
+}
+
+.other-messages {
+     text-align: right;
+}
+
+#messages {
+    overflow: scroll;
+    height: 85vh;
+    width: 80vw;
+}
+
+.input {
+    position: fixed;
+    bottom: 100px;
+}
+  

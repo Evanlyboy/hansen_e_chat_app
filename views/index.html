@@ -14,30 +14,35 @@
 </head>
 <body>
     <h1>IM</h1>
-    
-    <main id="app">
 
+    <main class="main" id="app">
+    
     <!-- Input Messages Section -->
       <section>
-          <h2>Input messages here:</h2>
-          <input v-model="username" id="username" type="text" placeholder="Nickname?">
-          
-          <!-- This is the message form -->
-          <form>
-              <label for="message">Type here!</label>
-              <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
-              <input @click.prevent="dispatchMessage" type="submit" value="Send">
-          </form>
+            <h2 class="one-item">Your Name:</h2>
+            <div class="one-item">
+                <input v-model="username" id="username" type="text" placeholder="Nickname?">
+            </div>
       </section>
 
       <!-- This is where you receieve messages -->
       <section class="messages">
-          <h2>Receive messages here:</h2>
-          <ul id="messages">
-              <!-- render a new message component for every message -->
-              <!-- <typemsg v-for="message in messages" :userTyping="typingEventMessage"></typemsg> -->
-              <newmsg v-for="message in messages" :msg="message"></newmsg>
-          </ul>
+        <h2 class="one-item">Receive messages here:</h2>
+        <div class="two-items">
+            <ul id="messages">
+                <!-- render a new message component for every message -->
+                <!-- <typemsg v-for="message in messages" :userTyping="typingEventMessage"></typemsg> -->
+                <newmsg v-for="message in messages" :msg="message"></newmsg>
+            </ul>
+        </div>
+        <div class="one-item">
+            <!-- This is the message form -->
+            <form class="input">
+                <label for="message">Type here!</label>
+                <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
+                <input @click.prevent="dispatchMessage" type="submit" value="Send">
+            </form>
+        </div>
       </section>
     </main>
 
