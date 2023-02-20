@@ -18,18 +18,11 @@
     <main class="main" id="app">
     
     <!-- Input Messages Section -->
-      <section class="input">
-          <h2 class="one-item">Input messages here:</h2>
-          <div class="two-items">
-            <input v-model="username" id="username" type="text" placeholder="Nickname?">
-          
-          <!-- This is the message form -->
-            <form>
-                <label for="message">Type here!</label>
-                <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
-                <input @click.prevent="dispatchMessage" type="submit" value="Send">
-            </form>
-          </div>
+      <section>
+            <h2 class="one-item">Your Name:</h2>
+            <div class="one-item">
+                <input v-model="username" id="username" type="text" placeholder="Nickname?">
+            </div>
       </section>
 
       <!-- This is where you receieve messages -->
@@ -41,6 +34,14 @@
                 <!-- <typemsg v-for="message in messages" :userTyping="typingEventMessage"></typemsg> -->
                 <newmsg v-for="message in messages" :msg="message"></newmsg>
             </ul>
+        </div>
+        <div class="one-item">
+            <!-- This is the message form -->
+            <form class="input">
+                <label for="message">Type here!</label>
+                <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
+                <input @click.prevent="dispatchMessage" type="submit" value="Send">
+            </form>
         </div>
       </section>
     </main>

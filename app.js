@@ -3,6 +3,10 @@ const app = express(); // create an express app
 const http = require('http'); //import the node server package
 const server = http.createServer(app); // use our app file with the server
 
+// Gonna slap some date and time on here
+var moment = require('moment'); // require
+    moment().format();
+
 //add in the socket.io server stuff
 const { Server } = require("socket.io");
 const io = new Server(server);
@@ -43,14 +47,14 @@ io.on('connection', (socket) => {
     // ------------------ Basic Handoff ------------------
     socket.on('chat_message', function(msg) { // "function" is irrational
       console.log(msg); // have a look at the message data
-
-
       // step 2
       // rebroadcast the current message to everyone connected to our chat service
       // it gets sent to all users, including the original message sender
 
+      var currentTime = moment().calendar();
+      console.log(currentTime);
       
-      io.emit('new_message', { id: socket.id, message: msg }); // Ok so now here's the handoff from the server (socket) to the client (io)
+      io.emit('new_message', { id: socket.id, time: currentTime, message: msg }); // Ok so now here's the handoff from the server (socket) to the client (io)
     })
     // ------------------------------------------------------
 
@@ -78,6 +82,8 @@ io.on('connection', (socket) => {
     //  So far this is the same as above with different words. Maybe 'user_typing' is somehow different.
     socket.on('user_typing', function(user) {
     console.log(user);
+
+    
 
     // Client sends the emit of typing and passes a function through it? I'll have to see what "currentlyTyping" is
     io.emit('typing', { currentlytyping: user });

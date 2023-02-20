@@ -16,4 +16,16 @@ header {
 
 .other-messages {
      text-align: right;
- }
+}
+
+#messages {
+    overflow: scroll;
+    height: 85vh;
+    width: 80vw;
+}
+
+.input {
+    position: fixed;
+    bottom: 100px;
+}
+  
